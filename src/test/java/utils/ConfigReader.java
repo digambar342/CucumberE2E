@@ -7,12 +7,12 @@ public class ConfigReader {
     private static String browserName;
 
     public static String getBaseUrl() throws IOException {
-        Utils.getConfig("baseUrl");
+        baseUrl= Utils.getConfig("baseUrl");
         return baseUrl;
     }
 
     public static String getBrowserName() throws IOException {
-        Utils.getConfig("browserName");
+        browserName = Utils.getConfig("browserName");
         return browserName;
     }
 

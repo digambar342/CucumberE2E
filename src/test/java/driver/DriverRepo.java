@@ -2,7 +2,11 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DriverRepo {
     private static WebDriver driver;
@@ -11,7 +15,11 @@ public class DriverRepo {
     }
     public static void setDriver(String browser){
         if(browser.equalsIgnoreCase("chrome")){
-            driver=new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            Map<String,Object> prefs= new HashMap<String,Object>();
+            prefs.put("profile.password_manager_leak_detection", false);
+            options.setExperimentalOption("prefs",prefs);
+            driver=new ChromeDriver(options);
             tlDriver.set(driver);
         }else if(browser.equalsIgnoreCase("edge")){
             driver=new EdgeDriver();
@@ -24,6 +32,7 @@ public class DriverRepo {
     }
     public static void removeDriver(){
         if(driver!=null){
+            driver.quit();
             tlDriver.remove();
         }
     }
