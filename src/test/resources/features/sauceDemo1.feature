@@ -1,4 +1,4 @@
-Feature: SuaceDemo
+Feature: SuaceDemo1
   Scenario Outline: Login with valid credentials
     Given user enters correct userName "<userName>"
     And user enters correct password "<password>"

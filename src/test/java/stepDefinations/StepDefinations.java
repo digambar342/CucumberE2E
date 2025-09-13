@@ -32,5 +32,8 @@ public class StepDefinations {
     public void user_verifies_that_product_page_appears(){
         Assert.assertTrue(productPage.verifyProductPage());
     }
-
+    @Given("user verifies the error message")
+    public void user_verifies_the_error_message(){
+     loginPage.validateErrorMessage();
+    }
 }

@@ -1,0 +1,17 @@
+<suite name="sauce demo" parallel="tests" thread-count="3">
+    <test name="feature1">
+        <classes>
+            <class name="runner.TestRunner1"/>
+        </classes>
+    </test>
+    <test name="feature2">
+        <classes>
+            <class name="runner.TestRunner2"/>
+        </classes>
+    </test>
+    <test name="feature3">
+        <classes>
+            <class name="runner.TestRunner3"/>
+        </classes>
+    </test>
+</suite>

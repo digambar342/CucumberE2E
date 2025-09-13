@@ -2,12 +2,16 @@ package base;
 
 import driver.DriverRepo;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import utils.ConfigReader;
 import utils.Utils;
 import io.cucumber.java.Before;
 
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 
@@ -15,6 +19,7 @@ public class BaseTest {
 
     @Before
     public void setUp() throws IOException {
+        System.out.println("inside hook before");
         DriverRepo.setDriver(ConfigReader.getBrowserName());
         DriverRepo.getDriver().get(ConfigReader.getBaseUrl());
         DriverRepo.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -23,5 +28,14 @@ public class BaseTest {
     @After
     public void tearDown(){
        DriverRepo.removeDriver();
+    }
+
+    @After
+    public void takeSS(Scenario scenario){
+        if(scenario.isFailed()){
+            System.out.println("inside failed hook");
+            byte[] screenshot= ((TakesScreenshot)DriverRepo.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","Failed scenario ss");
+        }
     }
 }

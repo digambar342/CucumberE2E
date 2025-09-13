@@ -31,8 +31,8 @@ public class DriverRepo {
         return tlDriver.get();
     }
     public static void removeDriver(){
-        if(driver!=null){
-            driver.quit();
+        if(tlDriver.get()!=null){
+            tlDriver.get().quit();
             tlDriver.remove();
         }
     }
