@@ -6,6 +6,10 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import utils.ConfigReader;
 import utils.Utils;
 import io.cucumber.java.Before;
@@ -17,16 +21,16 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    @Before
-    public void setUp() throws IOException {
+
+    public static void setUp() throws IOException {
         System.out.println("inside hook before");
         DriverRepo.setDriver(ConfigReader.getBrowserName());
         DriverRepo.getDriver().get(ConfigReader.getBaseUrl());
         DriverRepo.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         DriverRepo.getDriver().manage().window().maximize();
     }
-    @After
-    public void tearDown(){
+
+    public static void tearDown(){
        DriverRepo.removeDriver();
     }
 

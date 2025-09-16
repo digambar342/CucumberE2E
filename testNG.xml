@@ -1,15 +1,18 @@
 <suite name="sauce demo" parallel="tests" thread-count="3">
     <test name="feature1">
+        <parameter name="featurePath" value="src/test/resources/features/sauceDemo1.feature"/>
         <classes>
             <class name="runner.TestRunner1"/>
         </classes>
     </test>
     <test name="feature2">
+        <parameter name="featurePath" value="src/test/resources/features/sauceDemo2.feature"/>
         <classes>
             <class name="runner.TestRunner2"/>
         </classes>
     </test>
     <test name="feature3">
+        <parameter name="featurePath" value="src/test/resources/features/sauceDemo3.feature"/>
         <classes>
             <class name="runner.TestRunner3"/>
         </classes>
